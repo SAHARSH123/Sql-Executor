@@ -28,6 +28,7 @@ Dillinger uses a number of open source projects to work properly:
 - [react-accessible-accordion](https://www.npmjs.com/package/react-accessible-accordion) - Accordian component for react
 - [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) - For showing loader
 - [react-table](https://www.npmjs.com/package/react-table) - Used for table pagination features
+- [react-json-to-csv](https://www.npmjs.com/package/react-json-to-csv) - A react button component to easily generate csv downloads of your json data.
 
 
 
