@@ -4,6 +4,20 @@
 
 - Its a sql executor which can execute predefined sql listed at bottom as it doesn't have any backend.
 
+## Features
+- We have a predefined set of sql to run on the editor.
+- Once run we can see the results of each query.
+- On Click of accordian we can see the table corresponding to that query.
+- We have download button through which we can download CSV of that table.
+
+## Predefine SQLS
+
+- select \* from categories
+- select \* from customers
+- select \* from employee
+- select \* from employeeTerritory
+- select \* from products
+
 ## Tech
 
 Dillinger uses a number of open source projects to work properly:
@@ -15,13 +29,7 @@ Dillinger uses a number of open source projects to work properly:
 - [react-loader-spinner](https://www.npmjs.com/package/react-loader-spinner) - For showing loader
 - [react-table](https://www.npmjs.com/package/react-table) - Used for table pagination features
 
-## Predefine SQLS
 
-- select \* from categories
-- select \* from customers
-- select \* from employee
-- select \* from employeeTerritory
-- select \* from products
 
 ## Installation
 
