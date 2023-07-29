@@ -18,6 +18,9 @@
 - select \* from employeeTerritory
 - select \* from products
 
+## Demo
+Website Live at : [Sql-Executor](https://sql-executor.netlify.app/)
+
 ## Tech
 
 Dillinger uses a number of open source projects to work properly:
