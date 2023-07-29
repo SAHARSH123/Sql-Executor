@@ -13,23 +13,20 @@ const SqlEditor = ({ code, handleChange, handleClick }) => {
         mode="mysql"
         theme="twilight"
         name="editor"
-        fontSize={16}
-        minLines={15}
+        fontSize={15}
+        minLines={10}
         maxLines={10}
         width="100%"
         showPrintMargin={false}
         showGutter
         placeholder="Write your Query here..."
-        setOptions={{
-          enableBasicAutocompletion: true,
-          enableLiveAutocompletion: true,
-          enableSnippets: true,
-        }}
         value={code}
         onChange={handleChange}
         showLineNumbers
       />
-      <button onClick={handleClick}>Run Query</button>
+      <button type="button" onClick={handleClick}>
+        Run Query
+      </button>
     </div>
   );
 };

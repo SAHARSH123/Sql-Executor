@@ -1,7 +1,7 @@
-import React, { Suspense } from "react";
+import React, { Suspense, useCallback } from "react";
+import "./App.css";
 import { useEffect, useState } from "react";
 import { fetchData } from "./common/request";
-import "./App.css";
 import Loader from "./components/Loader";
 const SqlEditor = React.lazy(() => import("./components/SqlEditor"));
 const TableWrapper = React.lazy(() => import("./components/TableWrapper"));
@@ -12,7 +12,6 @@ function App() {
   const [queries, setQueries] = useState([]);
   const [tableData, setTableData] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState(false);
 
   const handleClick = () => {
     const values = code.split("\n");
@@ -37,24 +36,22 @@ function App() {
         setLoading(false);
       } catch (err) {
         setLoading(false);
-        setError(true);
       }
     };
 
     if (queries.length > 0) {
       setLoading(true);
-      setError(false);
       getData(queries);
     }
   }, [queries]);
 
-  const handleChange = (value) => {
+  const handleChange = useCallback((value) => {
     setCode(value);
-  };
+  }, []);
 
   return (
     <div>
-      <div>
+      <div tabIndex={0}>
         <Suspense fallback={<div>Loading...</div>}>
           <SqlEditor
             code={code}
@@ -64,22 +61,20 @@ function App() {
         </Suspense>
       </div>
 
-      {loading === true && (
+      {loading === true ? (
         <div className="loader">
           <Loader />
         </div>
-      )}
+      ) : null}
 
-      {showData === true && loading === false && (
-        <div>
+      {showData === true && loading === false ? (
+        <div tabIndex={0}>
           {tableData.map((td) => {
             const keys = Object.keys(td.data[0]);
             return <TableWrapper key={keys[0]} tabledata={td} />;
           })}
         </div>
-      )}
-
-      {error === true && <div>Something wrong happened..</div>}
+      ) : null}
     </div>
   );
 }
