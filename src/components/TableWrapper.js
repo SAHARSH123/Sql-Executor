@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo } from "react";
+import React, { useCallback, useMemo, memo } from "react";
 import Table from "./Table";
 import {
   Accordion,
@@ -84,4 +84,4 @@ const TableWrapper = ({ tabledata }) => {
   );
 };
 
-export default TableWrapper;
+export default memo(TableWrapper);

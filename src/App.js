@@ -1,12 +1,10 @@
-import AceEditor from "react-ace";
-import "ace-builds/src-min-noconflict/ext-language_tools";
-import "ace-builds/src-min-noconflict/mode-mysql";
-import "ace-builds/src-noconflict/theme-twilight";
+import React, { Suspense } from "react";
 import { useEffect, useState } from "react";
-import TableWrapper from "./components/TableWrapper";
 import { fetchData } from "./common/request";
-import { Audio } from "react-loader-spinner";
 import "./App.css";
+import Loader from "./components/Loader";
+const SqlEditor = React.lazy(() => import("./components/SqlEditor"));
+const TableWrapper = React.lazy(() => import("./components/TableWrapper"));
 
 function App() {
   const [code, setCode] = useState("");
@@ -56,43 +54,19 @@ function App() {
 
   return (
     <div>
-      <div className="app-editor">
-        <AceEditor
-          id="editor"
-          aria-label="editor"
-          mode="mysql"
-          theme="twilight"
-          name="editor"
-          fontSize={16}
-          minLines={15}
-          maxLines={10}
-          width="100%"
-          showPrintMargin={false}
-          showGutter
-          placeholder="Write your Query here..."
-          setOptions={{
-            enableBasicAutocompletion: true,
-            enableLiveAutocompletion: true,
-            enableSnippets: true,
-          }}
-          value={code}
-          onChange={handleChange}
-          showLineNumbers
-        />
-        <button onClick={handleClick}>Run Query</button>
+      <div>
+        <Suspense fallback={<div>Loading...</div>}>
+          <SqlEditor
+            code={code}
+            handleChange={handleChange}
+            handleClick={handleClick}
+          />
+        </Suspense>
       </div>
 
       {loading === true && (
         <div className="loader">
-          <Audio
-            height="80"
-            width="80"
-            radius="9"
-            color="black"
-            ariaLabel="loading"
-            wrapperStyle
-            wrapperClass
-          />
+          <Loader />
         </div>
       )}
 
