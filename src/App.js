@@ -8,8 +8,6 @@ import { fetchData } from "./common/request";
 import { Audio } from "react-loader-spinner";
 import "./App.css";
 
-// "react-json-to-csv": "^1.2.0",
-
 function App() {
   const [code, setCode] = useState("");
   const [showData, setShowData] = useState(false);
